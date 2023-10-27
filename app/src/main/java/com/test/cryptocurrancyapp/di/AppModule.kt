@@ -17,29 +17,21 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
-
-
-
-
     @Provides
     @Singleton
     fun providePaprikaApi():CoinPaprikaApi{
         return ApiManager.getPaprikaApi()
     }
-
     @Provides
     @Singleton
     fun provideCoinDataSource(api:CoinPaprikaApi):CoinRemoteDataSource{
         return CoinRemoteDataSourceImpl(api)
     }
-
     @Provides
     @Singleton
     fun provideCoinRepository(dataSource:CoinRemoteDataSource):CoinRemoteRepository{
         return CoinRemoteRepositoryImpl(dataSource)
     }
-
     @Provides
     fun getCoinByIdUseCase(repository: CoinRemoteRepository):GetCoinByIdUseCase{
         return GetCoinByIdUseCase(repository)
