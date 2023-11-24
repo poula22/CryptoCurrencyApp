@@ -5,9 +5,9 @@ import com.test.domain.model.CoinDetailDomainModel
 import com.test.domain.repo.CoinRemoteRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import java.io.IOException
+import javax.inject.Inject
 
-class GetCoinByIdUseCase(private val repository: CoinRemoteRepository) {
+class GetCoinByIdUseCase @Inject constructor (private val repository: CoinRemoteRepository) {
     operator fun invoke(coinId:String): Flow<Resource<CoinDetailDomainModel>> = flow{
             emit(Resource.Loading())
             emit(repository.getCoinById(coinId))
