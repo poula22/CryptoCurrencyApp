@@ -11,8 +11,7 @@ import java.io.IOException
 import javax.inject.Inject
 
 class CoinRemoteRepositoryImpl @Inject constructor(
-    private val coinRemoteDataSource: CoinRemoteDataSource,
-    private val coinLocalDataSource: CoinRemoteDataSource
+    private val coinRemoteDataSource: CoinRemoteDataSource
 ) : CoinRemoteRepository {
     override suspend fun getCoins(): Resource<List<CoinDomainModel>> {
         return try {

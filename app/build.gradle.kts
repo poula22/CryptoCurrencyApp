@@ -96,4 +96,3 @@ dependencies {
 kapt {
     correctErrorTypes = true
 }
-

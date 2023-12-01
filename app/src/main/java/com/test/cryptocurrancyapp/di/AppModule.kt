@@ -1,5 +1,6 @@
 package com.test.cryptocurrancyapp.di
 
+import com.test.common.Constants
 import com.test.data.data_source.CoinRemoteDataSourceImpl
 import com.test.data.data_source.FakeDataSourceImpl
 import com.test.data.remote.ApiManager
@@ -22,7 +23,7 @@ abstract class AppModule {
         @Singleton
         @Provides
         fun provideApiManager():ApiManager{
-            return ApiManager()
+            return ApiManager(Constants.BASE_URL)
         }
         //solution 1 to ODC Task
         @Singleton
@@ -31,7 +32,6 @@ abstract class AppModule {
             return FakeDataSourceImpl(apiManager.buildWebService(CoinPaprikaApi::class.java))
         }
     }
-
     //solution 2 to ODC Task
     @Singleton
     @Binds
